@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<section class="page_header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="text-uppercase">Menu</h2>
+                <p>BonAppetit is a delicious restaurant website.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="menu menu2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header wow fadeInDown">
+                    <h1>Overlay<small>These fine folks trusted the award winning restaurant.</small></h1>
+                </div>
+            </div>
+        </div>
+        <div class="food-menu wow fadeInUp">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="menu-tags2">
+                        <span data-filter="*" class="tagsort2-active">All</span>
+                        {% for i in cat %}
+                        <span data-filter=".{{i}}">{{i}}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="row menu-items2">
+                {% for i in dishes %}
+                <div class="menu-item2 col-sm-4 col-xs-12 {{ i.cat }}">
+                    <div class="menu-info">
+                        <img src="{{ i.img.url }}" style="width: 360px; height:236px; " class="img-responsive" alt="" />
+                        
+                            <div class="menu2-overlay">
+                                <h4>{{ i.title }}</h4>
+                                <p> {{ i.dis }} </p>
+                                <span class="price">&#8377; {{ i.price }}</span>
+                            </div>
+                        
+                    </div>
+                    <a href="{% url 'shop' i.id %}" class="menu-more">+</a>
+                </div>
+                {% endfor %}              
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

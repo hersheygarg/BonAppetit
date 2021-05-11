@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}
+
+            <section class="page_header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2 class="text-uppercase">{{dish.title}}</h2>
+                            <p>{{dish.dis}}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="shop-content">
+                <div class="container">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="single-shop-carousel">
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic" src="{{ dish.img.url }}" style="height:450px; width:550px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic" src="{{ dish.img1.url }}" style="height:450px; width:550px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic" src="{{ dish.img2.url }}" style="height:450px; width:550px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic" src="{{ dish.img.url }}" style="height:450px; width:550px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic" src="{{ dish.img1.url }}" style="height:450px; width:550px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic" src="{{ dish.img2.url }}" style="height:450px; width:550px">
+                                    </div>
+                                </div>
+                                <div class="single-shop-carousel-nav">
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic-small"  src="{{ dish.img.url }}"  style="height:150px; width:150px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic-small" src="{{ dish.img1.url }}" style="height:150px; width:150px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic-small" src="{{ dish.img2.url }}" style="height:150px; width:150px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic-small" src="{{ dish.img.url }}" style="height:150px; width:150px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic-small" src="{{ dish.img1.url }}" style="height:150px; width:150px">
+                                    </div>
+                                    <div>
+                                        <img class="img-responsive single-cart-pic foodpic-small" src="{{ dish.img2.url }}" style="height:150px; width:150px">
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-6 shop-single-info">
+                                <div class="shop-single-title">
+                                    <h3 class="text-left">{{dish.title}}</h3>
+                                </div>
+                                <div class="shop-single-price">
+                                    <div class="ssp pull-left">&#8377;{{dish.price}} <span>&#8377;{{dish.mrp}}</span></div>
+                                </div>
+                                <p>{{dish.dis}}</p>
+                                <label>Quantity</label>
+                                <div class="quantity">
+                                    <input type="number" min="1" max="5" name="qty" value="1" required>
+                                    <button type="submit" name="" class="btn btn-default pull-right">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                </div>
+            </section>     
+{% endblock body %}

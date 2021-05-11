@@ -1,0 +1,77 @@
+{% extends 'base2.html' %}
+{% block body %}
+{% load static %}
+
+<div class="col-md-6">
+    <div class="page-header">
+        <h2>Reservations</h2>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Guests</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in res %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{ i.guests }}</td>
+                <td>{{i.date}}</td>
+                <td>{{ i.time }}</td>
+                <td>{{ i.confirm }}</td>
+                <form method='post'>
+                {% csrf_token %}
+                <td><button type="submit" name="confirm" value="{{ i.id }}" class="btn btn-success btn-xs">Confirm</button>
+                    <button type="submit" name="delete" value="{{ i.id}}" class="btn btn-danger btn-xs">Delete</button>
+                </td>  
+                </form> 
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="col-md-6">
+    <div class="page-header">
+        <h2>Orders</h2>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>dish</th>
+                <th>price</th>
+                <th>qty</th>
+                <th>Paid</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in order %}
+            <tr>
+                <td>{{i.user.username}}</td>
+                <td>{{ i.dish.title }}</td>
+                <td>{{i.dish.price}}</td>
+                <td>{{ i.qty }}</td>
+                <td>{{ i.confirmation }}</td>
+                <form method='post'>
+                {% csrf_token %}
+                <td><button type="submit" name="confirmOrder" value="{{ i.id }}" class="btn btn-success btn-xs">Confirm</button>
+                    <button type="submit" name="deleteOrder" value="{{ i.id}}" class="btn btn-danger btn-xs">Delete</button>
+                </td>  
+                </form> 
+            {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
