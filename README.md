@@ -1,4 +1,4 @@
-# Tomato
+# BonAppetit
 Django web application for Ordering Food online and Table Reservation.
 
 Database Used : SQLite
